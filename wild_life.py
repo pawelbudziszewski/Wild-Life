@@ -92,10 +92,11 @@ class WildLife:
     def generate_image(self):
         """ Generate OpenCV image based on game's world and menu
         """
-        img=np.vstack((self.world_img,self.menu))*-1+1
-        if self.N>1:
-            img=img.repeat(self.N, axis=0).repeat(self.N, axis=1)
+        img = self.world_img*-1+1
         remapped = cv2.applyColorMap((img*255).astype(np.uint8), COLOR_MAPS[self.color_map_id])
+        remapped = np.vstack((remapped,self.menu))
+        if self.N>1:
+            remapped=remapped.repeat(self.N, axis=0).repeat(self.N, axis=1)
         return remapped
 
 
@@ -106,7 +107,7 @@ class WildLife:
             boundary = 'wrap'
         else:
             boundary = 'fill'
-        neighbors_count = convolve2d(self.world, np.ones((3, 3)), mode='same', boundary=boundary) \
+        neighbors_count = convolve2d(self.world, np.ones((3, 3)), mode='same', boundary=boundary)\
             - self.world
         self.world = (neighbors_count == 3) | ((self.world==1) & (neighbors_count == 2))
 
@@ -114,7 +115,7 @@ class WildLife:
         self.world_img += self.world
 
 
-    def add_species(self, y, x, species, arena=[], center = True):
+    def add_species(self, y, x, species, arena=None, center = True):
         """ Add life form to grid
 
         Keyword arguments:
@@ -127,7 +128,7 @@ class WildLife:
                   the species (True), or upper-left corner (False)
         """
 
-        if arena == []:
+        if arena is None:
             arena = self.world
 
         (h,w) = species.shape
@@ -192,7 +193,8 @@ class WildLife:
 
             coords = (i*(max_w+4),(i+1)*(max_w+4))
             self.menu_items_coordinates.append(coords)
-
+        self.menu = self.menu*-1+1
+        self.menu = cv2.applyColorMap((self.menu*255).astype(np.uint8), COLOR_MAPS[self.color_map_id])
 
     def _click_menu(self, y, x):
         """ Process clicking on the menu
