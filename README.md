@@ -1,6 +1,6 @@
 # Wild-Life
 ## Interactive Game of Life
-This is my small lockdown-weekend project - my tribute to John Horton Conway.
+This is my small lockdown-weekend project - my tribute to [John Horton Conway](https://en.wikipedia.org/wiki/John_Horton_Conway).
 
 This is an interactive version of Conway’s Life Game, written in Python. It allows placing different life forms using mouse clicks while game is running.
 
@@ -22,4 +22,4 @@ In theory this code should run fine also on Linux, but I did not test it.
 -	`1`, `2`, `3`, `4` keys to change color map
 -	`Esc` to exit
 
-All configuration parameters are stored in first part of wild_life.py file.
+All configuration parameters are stored in the first part of wild_life.py file.
