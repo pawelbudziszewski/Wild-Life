@@ -149,7 +149,8 @@ class WildLife:
 
 
     def generate_aquarium(self, coords, density=0.15):
-        """ Generate square aquarium with randomally placed life cells
+        """ Generate rectangular aquarium with randomally placed life 
+        cells
 
         Keyword arguments:
         coords -- list of 4 values describing coordinates of
@@ -178,8 +179,8 @@ class WildLife:
         self.menu_items_coordinates = []
         self.menu = np.ones([max_h+5,self.W])*0.05
 
-        w=max_w//2+2
-        h=max_h//2+2
+        w = max_w//2+2
+        h = max_h//2+2
         bgr=np.zeros((max_h+2,max_w+2))
         bgr_border=np.ones((max_h+4,max_w+4))*0.5
         bgr_border[1:-1,1:-1] = 0.0
@@ -235,13 +236,13 @@ def click(event, x, y, flags, param):
         life.click(x,y)
 
 
-print("Starting you life jurney!")
+print("Starting the journey of your life!")
 
 life = WildLife()
 life.generate_aquarium(coords=(0, int(HEIGHT*0.7), WIDTH-1, HEIGHT-1))
 
-cv2.namedWindow('Life')
-cv2.setMouseCallback('Life',click)
+cv2.namedWindow('Wild Life')
+cv2.setMouseCallback('Wild Life',click)
 
 info_str=""
 
@@ -263,7 +264,7 @@ while True:
     pos = (out.shape[1]-200, out.shape[0]-10)
     out = cv2.putText(out, info_str, org=pos, fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=0.45,
         color=(150,100,100), thickness=1, lineType=cv2.LINE_AA)
-    cv2.imshow("Life", out)
+    cv2.imshow("Wild Life", out)
 
     # Hit Esc to exit
     k = cv2.waitKey(1)
