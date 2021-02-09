@@ -254,7 +254,10 @@ cnt=0
 
 start_time=time.time()
 
-while True:
+# Uncomment to wait for a key before app starts
+#cv2.waitKey()
+
+while cv2.getWindowProperty('Wild Life', cv2.WND_PROP_VISIBLE) >= 1:
 
     cnt+=1
 
@@ -285,5 +288,6 @@ while True:
     fps_history = np.append(fps_history,[fps])
     info_str=f"pop: {life.get_population()}  fps: {np.mean(fps_history):.1f}"
 
-cv2.waitKey()
+# Uncomment to wait for a key on exit before main windows dies
+#cv2.waitKey()
 cv2.destroyAllWindows()
