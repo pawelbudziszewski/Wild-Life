@@ -43,10 +43,11 @@ N=2
 WRAP_WORLD = False
 
 # Dying life cells leaves shadows. FADE_COEFFICIENT determines,
-# how long this # shadow will last. Greater value - longer shadow
+# how long this shadow will last. Greater value - longer shadow
 # lifetime. Value of 0.0 means no shadows.
-# This value should be larger or equal to 0 and lower than 1 (different
-# values are technically possible, but may giwe awkward results).
+# This value should be larger or equal to 0 and lower than 1 - other
+# values are technically possible, but may give awkward results (have 
+# fun testing).
 FADE_COEFFICIENT = 0.6
 
 # Color maps we can use
@@ -55,7 +56,7 @@ COLOR_MAPS = [cv2.COLORMAP_BONE,
               cv2.COLORMAP_OCEAN,
               cv2.COLORMAP_PINK
              ]
-# Initial one
+# Initial color map
 INITIAL_COLOR_MAP = 0
 
 # Life forms to be used in menu
@@ -68,7 +69,7 @@ SPECIES_MENU_ITEMS = [
               life_forms.PULSAR,
               life_forms.BLANK,
               ]
-# Initial one
+# Initial life form
 INITIAL_SPECIES_MENU_ITEM = 0
 
 
@@ -264,7 +265,7 @@ while cv2.getWindowProperty('Wild Life', cv2.WND_PROP_VISIBLE) >= 1:
     life.life_step()
     out=life.generate_image()
 
-    pos = (out.shape[1]-200, out.shape[0]-10)
+    pos = (out.shape[1]-250, out.shape[0]-10)
     out = cv2.putText(out, info_str, org=pos, fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=0.45,
         color=(150,100,100), thickness=1, lineType=cv2.LINE_AA)
     cv2.imshow("Wild Life", out)
@@ -286,7 +287,7 @@ while cv2.getWindowProperty('Wild Life', cv2.WND_PROP_VISIBLE) >= 1:
     start_time=time.time()
     fps_history = np.delete(fps_history, 0)
     fps_history = np.append(fps_history,[fps])
-    info_str=f"pop: {life.get_population()}  fps: {np.mean(fps_history):.1f}"
+    info_str=f"population: {life.get_population()}  fps: {np.mean(fps_history):.1f}"
 
 # Uncomment to wait for a key on exit before main windows dies
 #cv2.waitKey()

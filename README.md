@@ -2,12 +2,13 @@
 ## Interactive Game of Life
 This is my small lockdown-weekend project - my tribute to [John Horton Conway](https://en.wikipedia.org/wiki/John_Horton_Conway).
 
-This is an interactive version of Conway’s Life Game, written in Python. It allows placing different life forms using mouse clicks while game is running.
+This is an interactive version of Conway’s Life Game, written in Python. It allows placing different life forms using mouse while game is running.
 
 ### What you need:
 
 -	Python 3.8 or newer (should work on 3.6+, but did not test it)
 -	Numpy (`pip install numpy`)
+-   Scipy (`pip install scipy`)
 -	OpenCV (`pip install opencv-python`)
 
 ### How to run it:
