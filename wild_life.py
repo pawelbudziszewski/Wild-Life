@@ -6,6 +6,22 @@ Source and description:
 
 Copyright 2020 Paweł Budziszewski
 
+
+This is an interactive version of Conway’s Life Game, written in Python. 
+It allows placing different life forms using mouse while game is running.
+
+How to run it:
+On Windows just execute 'python3.exe wild_life.py'
+In theory this code should run fine also on Linux, but I did not test it.
+
+How use it:
+ - Mouse-click anywhere to insert species
+ - Mouse-click on the species list in the bottom to select species to 
+   be inserted
+ - [1], [2], [3], [4] keys to change color map
+ - [Esc] to exit
+
+
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -29,7 +45,7 @@ from scipy.signal import convolve2d
 import life_forms
 
 
-## Some consts
+## Configuration
 
 # Size of the world (number of grid cells)
 WIDTH=600
@@ -69,11 +85,12 @@ SPECIES_MENU_ITEMS = [
               life_forms.PULSAR,
               life_forms.BLANK,
               ]
-# Initial life form
+# Initially selected life form
 INITIAL_SPECIES_MENU_ITEM = 0
 
 
 class WildLife:
+    """ Life class"""
 
     def __init__(self):
         self.W = WIDTH
@@ -82,7 +99,9 @@ class WildLife:
 
         self.current_species = INITIAL_SPECIES_MENU_ITEM
 
+        # This will be our arena
         self.world = np.zeros([self.H,self.W])
+        # Arena transformed into image to be displayed
         self.world_img=np.ones([self.H,self.W])*0.5
 
         self.color_map_id = INITIAL_COLOR_MAP
@@ -210,16 +229,21 @@ class WildLife:
         self.generate_menu()
 
 
-    def click(self, x, y):
+    def click(self, event, x, y, flags, param):
         """ Event to be connected with OpenCV click
+        Usage:
+        cv2.setMouseCallback(window_name, life_object.click)
 
         Keyword arguments:
+        event -- OpenCV event
         x, y -- screen-space coordinates of mouse click
+        flags, param -- other OpenCV callback parameters
         """
-        if y//self.N > self.H:
-            self._click_menu(y//self.N-self.H, x//self.N)
-        else:
-            self.add_species(y//self.N, x//self.N, SPECIES_MENU_ITEMS[self.current_species])
+        if event == cv2.EVENT_LBUTTONDOWN :
+            if y//self.N > self.H:
+                self._click_menu(y//self.N-self.H, x//self.N)
+            else:
+                self.add_species(y//self.N, x//self.N, SPECIES_MENU_ITEMS[self.current_species])
 
 
     def get_population(self):
@@ -228,22 +252,13 @@ class WildLife:
         return np.sum(self.world)
 
 
-def click(event, x, y, flags, param):
-    """ OpenCV click event - just calling life's click
-    """
-    global life
-
-    if event == cv2.EVENT_LBUTTONDOWN :
-        life.click(x,y)
-
-
 print("Starting the journey of your life!")
 
 life = WildLife()
 life.generate_aquarium(coords=(0, int(HEIGHT*0.7), WIDTH-1, HEIGHT-1))
 
 cv2.namedWindow('Wild Life')
-cv2.setMouseCallback('Wild Life',click)
+cv2.setMouseCallback('Wild Life', life.click)
 
 info_str=""
 
