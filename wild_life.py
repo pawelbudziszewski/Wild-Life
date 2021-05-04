@@ -129,7 +129,7 @@ class WildLife:
             boundary = 'fill'
         neighbors_count = convolve2d(self.world, np.ones((3, 3)), mode='same', boundary=boundary)\
             - self.world
-        self.world = (neighbors_count == 3) | ((self.world==1) & (neighbors_count == 2))
+        self.world = (neighbors_count==3) | ((self.world==1) & (neighbors_count==2))
 
         self.world_img *= FADE_COEFFICIENT
         self.world_img += self.world
@@ -177,10 +177,9 @@ class WildLife:
                   upper left and lower right corners: (x1, y1, x2, y2)
         density -- coefficient describing how many grid cells will be
                    filled in: 0 - none, 1 - all
-
         """
 
-        aquarium = (np.random.rand(coords[3]-coords[1], coords[2]-coords[0]) > 1-density)
+        aquarium = (np.random.rand(coords[3]-coords[1], coords[2]-coords[0]) < density)
         self.world[coords[1]:coords[3], coords[0]:coords[2]] = aquarium.astype(int)
 
 
@@ -211,6 +210,7 @@ class WildLife:
             self.menu_items_coordinates.append(coords)
         self.menu = self.menu*-1+1
         self.menu = cv2.applyColorMap((self.menu*255).astype(np.uint8), COLOR_MAPS[self.color_map_id])
+
 
     def _click_menu(self, y, x):
         """ Process clicking on the menu
