@@ -180,13 +180,8 @@ class WildLife:
 
         """
 
-        for i in range(int((coords[2]-coords[0])*(coords[3]-coords[1])*density)):
-            x=random.randint(coords[0],coords[2])
-            y=random.randint(coords[1],coords[3])
-            while self.world[y,x]==1:
-                x=random.randint(coords[0],coords[2])
-                y=random.randint(coords[1],coords[3])
-            self.world[y,x] = 1
+        aquarium = (np.random.rand(coords[3]-coords[1], coords[2]-coords[0]) > 1-density)
+        self.world[coords[1]:coords[3], coords[0]:coords[2]] = aquarium.astype(int)
 
 
     def generate_menu(self):
