@@ -1,20 +1,19 @@
 # Wild-Life
 ## Interactive Game of Life
-This is my small lockdown-weekend project - my tribute to [John Horton Conway](https://en.wikipedia.org/wiki/John_Horton_Conway).
-
-This is an interactive version of Conway’s Life Game, written in Python. It allows placing different life forms using mouse while game is running.
+This is my small lockdown-weekend project: my tribute to [John Horton Conway](https://en.wikipedia.org/wiki/John_Horton_Conway) - an interactive version of Life Game.
+I always wondered, how fun it would be to be able modify life's world in the runtime. So here it is: use your mouse to add new life forms.
 
 ### What you need:
 
--	Python 3.8 or newer (should work on 3.6+, but did not test it)
+-	Python 3.8 or newer (should work on 3.6+, but I didn't test it)
 -	Numpy (`pip install numpy`)
--   Scipy (`pip install scipy`)
+- Scipy (`pip install scipy`)
 -	OpenCV (`pip install opencv-python`)
 
-### How to run it:
-On Windows just execute `python3.exe wild_life.py`
+It should run on any system where you can install Python with modules listed above, however I tested it only on Windows.
 
-In theory this code should run fine also on Linux, but I did not test it.
+### How to run it:
+Run `python3.exe wild_life.py` (or equivalent on your system)
 
 ### How use it:
 
