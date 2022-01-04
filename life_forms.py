@@ -9,7 +9,7 @@ convert_species()
 Source and description:
    https://github.com/pawelbudziszewski/Wild-Life
 
-Copyright 2020 Paweł Budziszewski
+Copyright 2021, 2022 Paweł Budziszewski
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
