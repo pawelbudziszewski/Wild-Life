@@ -4,7 +4,7 @@ An interactive version of Conway’s Life Game, written in Python.
 Source and description:
    https://github.com/pawelbudziszewski/Wild-Life
 
-Copyright 2020 Paweł Budziszewski
+Copyright 2021, 2022 Paweł Budziszewski
 
 
 This is an interactive version of Conway’s Life Game, written in Python. 
