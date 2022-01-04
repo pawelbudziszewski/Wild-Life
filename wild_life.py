@@ -75,7 +75,7 @@ COLOR_MAPS = [cv2.COLORMAP_BONE,
 # Initial color map
 INITIAL_COLOR_MAP = 0
 
-# Life forms to be used in menu
+# Life forms to be used in menu (see life_forms.py)
 SPECIES_MENU_ITEMS = [
               life_forms.GOSPER_GLIDER_GUN,
               life_forms.GLIDERS,
