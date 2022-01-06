@@ -285,6 +285,10 @@ while cv2.getWindowProperty('Wild Life', cv2.WND_PROP_VISIBLE) >= 1:
     if k%256 == 27:
         break
 
+    # Exit when window is closed by clicking [X]
+    if cv2.getWindowProperty('Wild Life', 0)<0:
+        break
+      
     # Hit number keys (1..0) to change color maps
     n=k%256-49
     if 0<=n<len(COLOR_MAPS):
