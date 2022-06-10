@@ -106,6 +106,10 @@ class WildLife:
 
         self.color_map_id = INITIAL_COLOR_MAP
 
+        # Convolution kernel (for counting neighbours)
+        self.conv_kernel = np.ones((3, 3))
+        self.conv_kernel[1,1] = 0
+
         self.generate_menu()
 
 
@@ -127,8 +131,7 @@ class WildLife:
             boundary = 'wrap'
         else:
             boundary = 'fill'
-        neighbors_count = convolve2d(self.world, np.ones((3, 3)), mode='same', boundary=boundary)\
-            - self.world
+        neighbors_count = convolve2d(self.world, self.conv_kernel, mode='same', boundary=boundary)
         self.world = (neighbors_count==3) | ((self.world==1) & (neighbors_count==2))
 
         self.world_img *= FADE_COEFFICIENT
@@ -283,10 +286,6 @@ while cv2.getWindowProperty('Wild Life', cv2.WND_PROP_VISIBLE) >= 1:
     # Hit Esc to exit
     k = cv2.waitKey(1)
     if k%256 == 27:
-        break
-
-    # Exit when window is closed by clicking [X]
-    if cv2.getWindowProperty('Wild Life', 0)<0:
         break
       
     # Hit number keys (1..0) to change color maps
