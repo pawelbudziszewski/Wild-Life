@@ -45,7 +45,7 @@ from scipy.signal import convolve2d
 import life_forms
 
 
-## Configuration
+## ----- Configuration parameters -----
 
 # Size of the world (number of grid cells)
 WIDTH=600
@@ -87,6 +87,8 @@ SPECIES_MENU_ITEMS = [
               ]
 # Initially selected life form
 INITIAL_SPECIES_MENU_ITEM = 0
+
+## ----- Configuration end -----
 
 
 class WildLife:
@@ -264,7 +266,6 @@ info_str=""
 # will be displayed. Make it larger to have smoother fps display.
 # Size of 1 will give real-time readings.
 fps_history=np.zeros((80))
-cnt=0
 
 start_time=time.time()
 
@@ -272,8 +273,6 @@ start_time=time.time()
 #cv2.waitKey()
 
 while cv2.getWindowProperty('Wild Life', cv2.WND_PROP_VISIBLE) >= 1:
-
-    cnt+=1
 
     life.life_step()
     out=life.generate_image()
