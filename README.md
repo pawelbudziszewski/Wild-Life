@@ -3,6 +3,10 @@
 This is my small lockdown-weekend project: my tribute to [John Horton Conway](https://en.wikipedia.org/wiki/John_Horton_Conway) - an interactive version of Life Game.
 I always wondered, how fun it would be to be able modify life's world in the runtime. So here it is: use your mouse to add new life forms.
 
+Video demonstration:
+
+[![Watch the video](https://img.youtube.com/vi/WSkPuXGfMSo/hqdefault.jpg)](https://youtu.be/WSkPuXGfMSo)
+
 ### What you need:
 
 -	Python 3.8 or newer (should work on 3.6+, but I didn't test it)
