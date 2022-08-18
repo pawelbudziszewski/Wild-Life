@@ -19,7 +19,7 @@ It should run on any system where you can install Python with modules listed abo
 ### How to run it:
 Run `python3.exe wild_life.py` (or equivalent on your system)
 
-### How use it:
+### How to use it:
 
 -	Mouse-click anywhere to insert species
 -	Mouse-click on the species list in the bottom to select species to be inserted
@@ -27,3 +27,6 @@ Run `python3.exe wild_life.py` (or equivalent on your system)
 -	`Esc` to exit
 
 All configuration parameters are stored in the first part of wild_life.py file.
+
+### Copyright
+Copyright 2021, 2022 [Paweł Budziszewski](https://github.com/pawelbudziszewski)
