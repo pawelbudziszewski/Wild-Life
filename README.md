@@ -11,7 +11,6 @@ Video demonstration:
 
 -	Python 3.8 or newer (should work on 3.6+, but I didn't test it)
 -	Numpy (`pip install numpy`)
-- Scipy (`pip install scipy`)
 -	OpenCV (`pip install opencv-python`)
 
 It should run on any system where you can install Python with modules listed above, however I tested it only on Windows.

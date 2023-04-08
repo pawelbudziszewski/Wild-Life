@@ -40,7 +40,6 @@ import random
 
 import numpy as np
 import cv2
-from scipy.signal import convolve2d
 
 import life_forms
 
@@ -48,8 +47,8 @@ import life_forms
 ## ----- Configuration parameters -----
 
 # Size of the world (number of grid cells)
-WIDTH=600
-HEIGHT=300
+WIDTH=800
+HEIGHT=450
 
 # Magnification - each cell will be displayed as NxN pixels.
 N=2
@@ -122,7 +121,7 @@ class WildLife:
         remapped = cv2.applyColorMap((img*255).astype(np.uint8), COLOR_MAPS[self.color_map_id])
         remapped = np.vstack((remapped,self.menu))
         if self.N>1:
-            remapped=remapped.repeat(self.N, axis=0).repeat(self.N, axis=1)
+            remapped =cv2.resize(remapped, (self.W*self.N, self.H*self.N), interpolation=cv2.INTER_NEAREST)
         return remapped
 
 
@@ -130,10 +129,11 @@ class WildLife:
         """ One step of life cycle
         """
         if WRAP_WORLD:
-            boundary = 'wrap'
+            borderType = cv2.BORDER_WRAP
         else:
-            boundary = 'fill'
-        neighbors_count = convolve2d(self.world, self.conv_kernel, mode='same', boundary=boundary)
+            borderType = cv2.BORDER_REPLICATE
+
+        neighbors_count = cv2.filter2D(self.world*1.0, -1, self.conv_kernel, borderType=borderType)
         self.world = (neighbors_count==3) | ((self.world==1) & (neighbors_count==2))
 
         self.world_img *= FADE_COEFFICIENT
@@ -272,8 +272,9 @@ start_time=time.time()
 # Uncomment to wait for a key before app starts
 #cv2.waitKey()
 
-while cv2.getWindowProperty('Wild Life', cv2.WND_PROP_VISIBLE) >= 1:
-
+# This doesn't work on Linux. Disabling 
+# while cv2.getWindowProperty('Wild Life', cv2.WND_PROP_VISIBLE) >= 1: 
+while True:
     life.life_step()
     out=life.generate_image()
 
