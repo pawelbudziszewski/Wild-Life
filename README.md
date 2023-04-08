@@ -34,4 +34,4 @@ The [minimal_code](minimal_code) folder contains shortest python implementation 
 Hit `Esc` to exit.
 
 ## Copyright
-Copyright 2021, 2022 [Paweł Budziszewski](https://github.com/pawelbudziszewski)
+Copyright 2021, 2022, 2023 [Paweł Budziszewski](https://github.com/pawelbudziszewski)
