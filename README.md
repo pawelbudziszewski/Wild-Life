@@ -30,9 +30,9 @@ All configuration parameters are stored in the first part of wild_life.py file.
 
 ## Bonus: minimal code - 154 bytes
 
-The `minimal_code` folder contains shortest python implementation I was able to create. It's fully functional (though not interactive), with OpenCV visualisation, very fast. In only `154 bytes` of code :)
+The [minimal_code](minimal_code) folder contains shortest python implementation I was able to create. It's fully functional (though not interactive), with OpenCV visualisation, very fast. In only `154 bytes` of code :)
 
 Hit `Esc` to exit.
 
-### Copyright
+## Copyright
 Copyright 2021, 2022 [Paweł Budziszewski](https://github.com/pawelbudziszewski)
