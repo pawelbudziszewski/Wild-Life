@@ -27,9 +27,9 @@ Run `python3.exe wild_life.py` (or equivalent on your system)
 
 All configuration parameters are stored in the first part of wild_life.py file.
 
-## Bonus: minimal code - 153 bytes
+## Bonus: minimal code - 141 bytes
 
-The [minimal_code](minimal_code) folder contains shortest python implementation I was able to create. It's fully functional (though not interactive), with OpenCV visualisation, very fast. In only `153 bytes` of code :)
+The [minimal_code](minimal_code) folder contains shortest python implementation I was able to create. It's fully functional (though not interactive), with OpenCV visualisation, very fast. In only `141 bytes` of code :)
 
 Hit `Esc` to exit.
 
